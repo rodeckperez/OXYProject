@@ -43,12 +43,12 @@
                     </span>
 
                     <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
-                        <input class="input100" type="text" name="username" placeholder="Numero de identificación">
-                        <span class="focus-input100"></span>
+                        <asp:TextBox ID="IdentificationNumber" placeholder="Numero de identificación" class="input100" runat="server"></asp:TextBox>
+                       <span class="focus-input100"></span>
                     </div>
 
                     <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter password">
-                        <input class="input100" type="password" name="pass" placeholder="Nombre Completo">
+                        <asp:TextBox ID="Names" placeholder="Nombre completo" class="input100" runat="server"></asp:TextBox>
                         <span class="focus-input100"></span>
                     </div>
 
@@ -62,14 +62,12 @@
                     </div>
 
                     <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter password">
-                        <input class="input100" type="password" name="pass" placeholder="Correo electronico">
+                        <asp:TextBox ID="Mail" placeholder="Correo" class="input100" runat="server"></asp:TextBox>
                         <span class="focus-input100"></span>
                     </div>
 
                     <div class="flex-col-c p-t-170 p-b-40">
-                        <button class="login100-form-btn">
-                            Registrarme
-                        </button>
+                        <asp:Button ID="BtnSaveEmployee" Text="Registrarme" class="login100-form-btn" runat="server" OnClick="SaveEmployee"></asp:Button>
                     </div>
                     <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString="<%$ ConnectionStrings:WorkInfoConnection %>"
                         ProviderName="System.Data.SqlClient" SelectCommand="SELECT [id], [description] FROM [symptoms_questions_tbl] where symptom_type=1" />

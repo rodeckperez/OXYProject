@@ -49,14 +49,12 @@
                     </div>
 
                     <div class="text-right p-t-13 p-b-23">
-                        <a href="#" class="txt2">Olvide mi contraseña
-                        </a>
+                          <asp:HyperLink runat="server" href="RecoverForm" class="txt2">Olvide mi contraseña
+                        </asp:HyperLink>
                     </div>
 
                     <div class="container-login100-form-btn">
-                        <button class="login100-form-btn">
-                            Ingresar
-                        </button>
+                         <asp:Button ID="BtnLogin" Text="Ingresar" class="login100-form-btn" runat="server" OnClick="LoginUser"></asp:Button>
                     </div>
 
                     <div class="flex-col-c p-t-170 p-b-40">

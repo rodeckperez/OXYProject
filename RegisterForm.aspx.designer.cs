@@ -33,6 +33,24 @@ namespace OXYProject
         protected global::Telerik.Web.UI.RadScriptManager RadScriptManager1;
 
         /// <summary>
+        /// IdentificationNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox IdentificationNumber;
+
+        /// <summary>
+        /// Names control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Names;
+
+        /// <summary>
         /// RadAutoCompleteBox1 control.
         /// </summary>
         /// <remarks>
@@ -40,6 +58,24 @@ namespace OXYProject
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadAutoCompleteBox RadAutoCompleteBox1;
+
+        /// <summary>
+        /// Mail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Mail;
+
+        /// <summary>
+        /// BtnSaveEmployee control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnSaveEmployee;
 
         /// <summary>
         /// SqlDataSource1 control.
