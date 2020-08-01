@@ -1,0 +1,4 @@
+﻿function showKeyboard() {
+    $("#divKeyboard").show();
+} 
+
