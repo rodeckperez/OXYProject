@@ -20,14 +20,14 @@ namespace OXYProject
         }
 
         public void SaveEmployee(object sender, EventArgs e) {
-            bool Response = false; 
+            string Response = ""; 
             ModelOXY.Employee.Employee employee = new ModelOXY.Employee.Employee();
             employee.IdentificationNumber = IdentificationNumber.Text;
             employee.Names = Names.Text;
             employee.Mail = Mail.Text;
             employee.Company = RadAutoCompleteBox1.Text;
             Response = employeeLogic.RegisterEmloyee(employee);
-            if (Response)
+            if (Response == "OK")
             {
 
             }

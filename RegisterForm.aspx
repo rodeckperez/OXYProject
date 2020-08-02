@@ -55,7 +55,7 @@
                     <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter password">
                         <telerik:RadAutoCompleteBox class="input100" RenderMode="Lightweight" runat="server"
                             ID="RadAutoCompleteBox1" EmptyMessage="Empresa"
-                            DataSourceID="SqlDataSource1" DataTextField="description" 
+                            DataSourceID="SqlDataSource1" DataTextField="nombre_empresa" 
                             InputType="Text" Width="350">
                         </telerik:RadAutoCompleteBox>
                         <span class="focus-input100"></span>
@@ -70,7 +70,7 @@
                         <asp:Button ID="BtnSaveEmployee" Text="Registrarme" class="login100-form-btn" runat="server" OnClick="SaveEmployee"></asp:Button>
                     </div>
                     <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString="<%$ ConnectionStrings:WorkInfoConnection %>"
-                        ProviderName="System.Data.SqlClient" SelectCommand="SELECT [id], [description] FROM [symptoms_questions_tbl] where symptom_type=1" />
+                        ProviderName="System.Data.SqlClient" SelectCommand="SELECT [id_empresa], nombre_empresa FROM empresa" />
 
                     <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
                         <AjaxSettings>
