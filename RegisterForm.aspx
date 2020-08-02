@@ -26,7 +26,7 @@
 
         .RadAutoCompleteBox .racEmptyMessage {
             font-style: normal !important;
-            color:black !important;
+            color: black !important;
             filter: alpha(opacity=80);
             opacity: .8;
         }
@@ -42,9 +42,10 @@
                     <span class="login100-form-title">Ingreso
                     </span>
 
+                  
                     <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
                         <asp:TextBox ID="IdentificationNumber" placeholder="Numero de identificación" class="input100" runat="server"></asp:TextBox>
-                       <span class="focus-input100"></span>
+                        <span class="focus-input100"></span>
                     </div>
 
                     <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter password">
@@ -55,7 +56,7 @@
                     <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter password">
                         <telerik:RadAutoCompleteBox class="input100" RenderMode="Lightweight" runat="server"
                             ID="RadAutoCompleteBox1" EmptyMessage="Empresa"
-                            DataSourceID="SqlDataSource1" DataTextField="nombre_empresa" 
+                            DataSourceID="SqlDataSource1" DataTextField="nombre_empresa"
                             InputType="Text" Width="350">
                         </telerik:RadAutoCompleteBox>
                         <span class="focus-input100"></span>
@@ -66,7 +67,11 @@
                         <span class="focus-input100"></span>
                     </div>
 
-                    <div class="flex-col-c p-t-170 p-b-40">
+                    <div class="flex-col-c p-t-10 p-b-0" >
+                        <asp:Label ID="lblResponse" runat="server" ></asp:Label>
+                    </div>
+
+                    <div class="flex-col-c p-t-15 p-b-40">
                         <asp:Button ID="BtnSaveEmployee" Text="Registrarme" class="login100-form-btn" runat="server" OnClick="SaveEmployee"></asp:Button>
                     </div>
                     <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString="<%$ ConnectionStrings:WorkInfoConnection %>"
@@ -82,6 +87,8 @@
                             </telerik:AjaxSetting>
                         </AjaxSettings>
                     </telerik:RadAjaxManager>
+
+
 
                     <telerik:RadAjaxLoadingPanel runat="server" ID="RadAjaxLoadingPanel1" />
                 </form>

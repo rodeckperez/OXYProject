@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -13,14 +14,16 @@ namespace OXYProject
         LogicOXY.Employee.EmployeeLogic employeeLogic = new LogicOXY.Employee.EmployeeLogic();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack) {
+            if (!IsPostBack)
+            {
                 RadAutoCompleteBox1.Filter = (RadAutoCompleteFilter)Enum.Parse(typeof(RadAutoCompleteFilter), "Contains", true);
                 RadAutoCompleteBox1.TextSettings.SelectionMode = (RadAutoCompleteSelectionMode)Enum.Parse(typeof(RadAutoCompleteSelectionMode), "Single", true);
             }
         }
 
-        public void SaveEmployee(object sender, EventArgs e) {
-            string Response = ""; 
+        public void SaveEmployee(object sender, EventArgs e)
+        {
+            string Response = "";
             ModelOXY.Employee.Employee employee = new ModelOXY.Employee.Employee();
             employee.IdentificationNumber = IdentificationNumber.Text;
             employee.Names = Names.Text;
@@ -29,11 +32,23 @@ namespace OXYProject
             Response = employeeLogic.RegisterEmloyee(employee);
             if (Response == "OK")
             {
+                lblResponse.ForeColor = Color.Green;
+                lblResponse.Text = "Cuenta creada exitosamente, te hemos enviado un correo electronico";
+                ClearControls();
+            }
+            else
+            {
+                lblResponse.ForeColor = Color.Red;
+                lblResponse.Text = Response;
+            }
+        }
 
-            }
-            else {
-            
-            }
+
+        private void ClearControls() {
+            IdentificationNumber.Text = "";
+            Names.Text = "";
+            Mail.Text = "";
+            RadAutoCompleteBox1.Entries.Clear();
         }
     }
 }
