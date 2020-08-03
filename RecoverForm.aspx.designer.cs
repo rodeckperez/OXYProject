@@ -33,6 +33,24 @@ namespace OXYProject
         protected global::Telerik.Web.UI.RadScriptManager RadScriptManager1;
 
         /// <summary>
+        /// Mail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox Mail;
+
+        /// <summary>
+        /// lblResponse control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblResponse;
+
+        /// <summary>
         /// BtnRecover control.
         /// </summary>
         /// <remarks>

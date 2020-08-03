@@ -27,19 +27,55 @@
                     </span>
 
                     <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter password">
-                        <input class="input100" type="password" name="pass" placeholder="Correo electronico">
+                        <asp:TextBox ID="Mail" placeholder="Correo" class="input100" runat="server"></asp:TextBox>
                         <span class="focus-input100"></span>
                     </div>
-
-                    <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter password">
-                          <asp:Button ID="BtnRecover" Text="Recuperar" class="login100-form-btn" runat="server" OnClick="RecoverPassword"></asp:Button>
+                    <div class="flex-col-c p-t-10 p-b-12">
+                        <asp:Label ID="lblResponse" runat="server"></asp:Label>
                     </div>
+                    <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter password">
+                        <asp:Button ID="BtnRecover" Text="Recuperar" class="login100-form-btn" runat="server" OnClick="RecoverPassword"></asp:Button>
+                    </div>
+
+                      <div class="flex-col-c p-t-10 p-b-40">
+                         <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="RedirectPage()">Cancelar</button>
+                    </div>
+
+                       <div id="MyPopup" class="modal fade" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title"></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="RedirectPage()">Aceptar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+                    <script src="vendor/bootstrap/js/popper.js"></script>
+                    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+                    <script>
+                        function ShowPopup(title, body) {
+                            $("#MyPopup .modal-title").html(title);
+                            $("#MyPopup .modal-body").html(body);
+                            $("#MyPopup").modal("show");
+                        }
+
+                        function RedirectPage() {
+                            location.href = 'LoginForm';
+                        }
+                    </script>
                 </form>
             </div>
         </div>
     </div>
-    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-    <script src="vendor/bootstrap/js/popper.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

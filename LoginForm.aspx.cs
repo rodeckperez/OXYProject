@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,28 +10,32 @@ namespace OXYProject
 {
     public partial class LoginForm : System.Web.UI.Page
     {
+        LogicOXY.Employee.EmployeeLogic employeeLogic = new LogicOXY.Employee.EmployeeLogic();
         protected void Page_Load(object sender, EventArgs e)
         {
-       //  RadFormDecorator1.DecoratedControls = UI.FormDecoratorDecoratedControls.All;
+
         }
 
-        protected void Login2_LogginIn(object sender, LoginCancelEventArgs e)
+        public void LoginUser(object sender, EventArgs e)
         {
-            e.Cancel = true;
-        //    LabelLogin.Text = "Welcome back, " + (Login2.FindControl("UserName") as TextBox).Text;
+            string Response = "";
+            Response = employeeLogic.LoginEmployee(Identificacion.Text, int.Parse(password.Text));
+            if (Response == "OK")
+            {
+                lblResponse.ForeColor = Color.Green;
+                lblResponse.Text = "Bienvenido";
+                Identificacion.Text = "";
+                password.Text = "";
+            }
+            else
+            {
+                string title = "Aviso";
+                string body = Response;
+                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
+            }
         }
 
-        protected void ChangePassword1_ChangingPassword(Object sender, LoginCancelEventArgs e)
-        {
-            e.Cancel = true;
-           // LabelChangePassword.Text = "You have successfully changed your password!";
-        }
-
-        protected void CreateUserWizard2_OnCreatingUser(object sender, LoginCancelEventArgs e)
-        {
-            e.Cancel = true;
-         //   LabelCreateUser.Text = "User <i>" + (sender as CreateUserWizard).UserName + "</i> created! Welcome aboard!";
-        }
+      
     }
 
 }

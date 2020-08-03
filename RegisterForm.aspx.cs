@@ -23,23 +23,26 @@ namespace OXYProject
 
         public void SaveEmployee(object sender, EventArgs e)
         {
-            string Response = "";
-            ModelOXY.Employee.Employee employee = new ModelOXY.Employee.Employee();
-            employee.IdentificationNumber = IdentificationNumber.Text;
-            employee.Names = Names.Text;
-            employee.Mail = Mail.Text;
-            employee.Company = RadAutoCompleteBox1.Text;
-            Response = employeeLogic.RegisterEmloyee(employee);
-            if (Response == "OK")
-            {
-                lblResponse.ForeColor = Color.Green;
-                lblResponse.Text = "Cuenta creada exitosamente, te hemos enviado un correo electronico";
-                ClearControls();
-            }
-            else
-            {
-                lblResponse.ForeColor = Color.Red;
-                lblResponse.Text = Response;
+            if (Page.IsValid) {
+                string Response = "";
+                ModelOXY.Employee.Employee employee = new ModelOXY.Employee.Employee();
+                employee.IdentificationNumber = IdentificationNumber.Text;
+                employee.Names = Names.Text;
+                employee.Mail = Mail.Text;
+                employee.Company = RadAutoCompleteBox1.Text;
+                Response = employeeLogic.RegisterEmloyee(employee);
+                if (Response == "OK")
+                {
+                    string title = "Aviso";
+                    string body = "Cuenta creada exitosamente, te hemos enviado un correo electronico";
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
+                    ClearControls();
+                }
+                else
+                {
+                    lblResponse.ForeColor = Color.Red;
+                    lblResponse.Text = Response;
+                }
             }
         }
 
@@ -50,5 +53,11 @@ namespace OXYProject
             Mail.Text = "";
             RadAutoCompleteBox1.Entries.Clear();
         }
+
+        public void RedirectPage(object sender, EventArgs e)
+        {
+            Response.Redirect(Page.ResolveClientUrl("/LoginForm.aspx"));
+        }
+            
     }
 }
