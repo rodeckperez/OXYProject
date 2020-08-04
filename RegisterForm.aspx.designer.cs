@@ -69,13 +69,13 @@ namespace OXYProject
         protected global::System.Web.UI.WebControls.TextBox Mail;
 
         /// <summary>
-        /// emailvalidator control.
+        /// remail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator emailvalidator;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator remail;
 
         /// <summary>
         /// lblResponse control.

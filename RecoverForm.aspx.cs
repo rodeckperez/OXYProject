@@ -18,19 +18,21 @@ namespace OXYProject
         }
         public void RecoverPassword(object sender, EventArgs e)
         {
-            string Response = "";
-            Response = employeeLogic.RecoverPassword(Mail.Text);
-            if (Response == "OK")
-            {
-                string title = "Aviso";
-                string body = "Te hemos enviado un correo electronico con tu nueva contraseña";
-                ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
-                Mail.Text = "";
-            }
-            else
-            {
-                lblResponse.ForeColor = Color.Red;
-                lblResponse.Text = Response;
+            if (Page.IsValid) {
+                string Response = "";
+                Response = employeeLogic.RecoverPassword(Mail.Text);
+                if (Response == "OK")
+                {
+                    string title = "Aviso";
+                    string body = "Te hemos enviado un correo electronico con tu nueva contraseña";
+                    ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
+                    Mail.Text = "";
+                }
+                else
+                {
+                    lblResponse.ForeColor = Color.Red;
+                    lblResponse.Text = Response;
+                }
             }
         }
 

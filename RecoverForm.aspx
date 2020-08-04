@@ -27,9 +27,17 @@
                     </span>
 
                     <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter password">
-                        <asp:TextBox ID="Mail" placeholder="Correo" class="input100" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="Mail" placeholder="Correo" class="input100" runat="server" required="true"></asp:TextBox>
                         <span class="focus-input100"></span>
                     </div>
+                    <div class="flex-col-c p-t-0 p-b-0 ">
+                        <asp:RegularExpressionValidator ID="remail" runat="server"
+                            ControlToValidate="Mail" ErrorMessage="Ingresa un correo valido" ForeColor="Red"
+                            ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">
+                        </asp:RegularExpressionValidator>
+                    </div>
+
+
                     <div class="flex-col-c p-t-10 p-b-12">
                         <asp:Label ID="lblResponse" runat="server"></asp:Label>
                     </div>
@@ -37,11 +45,11 @@
                         <asp:Button ID="BtnRecover" Text="Recuperar" class="login100-form-btn" runat="server" OnClick="RecoverPassword"></asp:Button>
                     </div>
 
-                      <div class="flex-col-c p-t-10 p-b-40">
-                         <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="RedirectPage()">Cancelar</button>
+                    <div class="flex-col-c p-t-10 p-b-40">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="RedirectPage()">Cancelar</button>
                     </div>
 
-                       <div id="MyPopup" class="modal fade" role="dialog">
+                    <div id="MyPopup" class="modal fade" role="dialog">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">

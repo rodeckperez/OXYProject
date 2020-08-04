@@ -63,15 +63,20 @@
                     </div>
 
                     <div class="wrap-input100 validate-input m-b-16">
-                        <asp:TextBox ID="Mail" placeholder="Correo" class="input100" runat="server"></asp:TextBox>
-                      </div>
+                        <asp:TextBox ID="Mail" placeholder="Correo" class="input100" runat="server" required="true"></asp:TextBox>
+
+                    </div>
+
+                    <div class="flex-col-c p-t-0 p-b-0 ">
+                        <asp:RegularExpressionValidator ID="remail" runat="server"
+                            ControlToValidate="Mail" ErrorMessage="Ingresa un correo valido" ForeColor="Red"
+                            ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">
+                        </asp:RegularExpressionValidator>
+                    </div>
 
                     <div>
-                        <asp:RequiredFieldValidator ID="emailvalidator" runat="server"
-                            ControlToValidate="Mail" ErrorMessage="El correo es obligatorio" ForeColor="Red">
-                        </asp:RequiredFieldValidator>
                     </div>
-                      <div class="flex-col-c p-t-10 p-b-12">
+                    <div class="flex-col-c p-t-10 p-b-12">
                         <asp:Label ID="lblResponse" runat="server"></asp:Label>
                     </div>
                     <div class="flex-col-c p-t-15 p-b-10">
@@ -118,8 +123,14 @@
                     <script src="vendor/bootstrap/js/popper.js"></script>
                     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
                     <script>
+                        var strCompany = "";
                         $(".racTokenList").addClass("input100");
                         $(".racTokenList").removeClass("racTokenList");
+                        //$("#RadAutoCompleteBox1").keydown(function (e) {
+                        //    BuildCompany(e.originalEvent.key);
+                        //});
+
+
                         function ShowPopup(title, body) {
                             $("#MyPopup .modal-title").html(title);
                             $("#MyPopup .modal-body").html(body);
@@ -128,6 +139,20 @@
 
                         function RedirectPage() {
                             location.href = 'LoginForm';
+                        }
+
+                        function BuildCompany(text) {
+                            if (text == 'Backspace') {
+                                strCompany = strCompany.slice(0, -1);
+                            }
+                            else if (text == 'Space') {
+                                strCompany = strCompany + " ";
+                            }
+                            else {
+                                strCompany = strCompany + text
+                            }
+                            $(".racTextToken").val(strCompany)
+                            console.log(strCompany);
                         }
                     </script>
                     <telerik:RadAjaxLoadingPanel runat="server" ID="RadAjaxLoadingPanel1" />

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Input;
 using Telerik.Web.UI;
 
 namespace OXYProject
@@ -23,7 +24,8 @@ namespace OXYProject
 
         public void SaveEmployee(object sender, EventArgs e)
         {
-            if (Page.IsValid) {
+            if (Page.IsValid)
+            {
                 string Response = "";
                 ModelOXY.Employee.Employee employee = new ModelOXY.Employee.Employee();
                 employee.IdentificationNumber = IdentificationNumber.Text;
@@ -47,7 +49,8 @@ namespace OXYProject
         }
 
 
-        private void ClearControls() {
+        private void ClearControls()
+        {
             IdentificationNumber.Text = "";
             Names.Text = "";
             Mail.Text = "";
@@ -58,6 +61,21 @@ namespace OXYProject
         {
             Response.Redirect(Page.ResolveClientUrl("/LoginForm.aspx"));
         }
-            
+
+        public void CompanyEntry(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                var autoComplete = (RadAutoCompleteBox)sender;
+
+            }
+        }
+
+
     }
 }
