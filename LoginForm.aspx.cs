@@ -18,19 +18,18 @@ namespace OXYProject
 
         public void LoginUser(object sender, EventArgs e)
         {
-            string Response = "";
-            Response = employeeLogic.LoginEmployee(Identificacion.Text, int.Parse(password.Text));
-            if (Response == "OK")
+            string Result = "";
+            Result = employeeLogic.LoginEmployee(Identificacion.Text, int.Parse(password.Text));
+            if (Result == "OK")
             {
-                lblResponse.ForeColor = Color.Green;
-                lblResponse.Text = "Bienvenido";
+                Response.Redirect("~/Symptoms");
                 Identificacion.Text = "";
                 password.Text = "";
             }
             else
             {
                 string title = "Aviso";
-                string body = Response;
+                string body = Result;
                 ClientScript.RegisterStartupScript(this.GetType(), "Popup", "ShowPopup('" + title + "', '" + body + "');", true);
             }
         }

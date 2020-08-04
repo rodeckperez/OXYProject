@@ -53,10 +53,7 @@
                         </asp:HyperLink>
                     </div>
 
-                    <div class="flex-col-c p-t-10 p-b-12">
-                        <asp:Label ID="lblResponse" runat="server"></asp:Label>
-                    </div>
-
+               
                     <div class="container-login100-form-btn">
                         <asp:Button ID="BtnLogin" Text="Ingresar" class="login100-form-btn" runat="server" OnClick="LoginUser"></asp:Button>
                     </div>

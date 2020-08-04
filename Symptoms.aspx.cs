@@ -20,7 +20,7 @@ namespace WorkingInfo
             WindowsIdentity wId = (WindowsIdentity)HttpContext.Current.User.Identity;
             username.Text = wId.Name.ToUpper();
             Name.Text = username.Text.Replace("NAOXY\\", "");
-            Name.Text = "AYUREA";
+            Name.Text = "xardilaf";
             //Check if exists answer for current day
             ndate.Text = DateTime.Today.ToString();
 
