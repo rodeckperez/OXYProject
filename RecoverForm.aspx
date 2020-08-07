@@ -26,7 +26,7 @@
                     <span class="login100-form-title">Recuperar Contraseña
                     </span>
 
-                    <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter password">
+                    <div class="wrap-input100 validate-input m-b-16">
                         <asp:TextBox ID="Mail" placeholder="Correo" class="input100" runat="server" required="true"></asp:TextBox>
                         <span class="focus-input100"></span>
                     </div>
@@ -42,7 +42,7 @@
                         <asp:Label ID="lblResponse" runat="server"></asp:Label>
                     </div>
                     <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter password">
-                        <asp:Button ID="BtnRecover" Text="Recuperar" class="login100-form-btn" runat="server" OnClick="RecoverPassword"></asp:Button>
+                        <asp:Button ID="BtnRecover" Text="Recuperar" class="login100-form-btn" runat="server" OnClientClick="disabledControl()" OnClick="RecoverPassword"></asp:Button>
                     </div>
 
                     <div class="flex-col-c p-t-10 p-b-40">
@@ -79,6 +79,11 @@
 
                         function RedirectPage() {
                             location.href = 'LoginForm';
+                        }
+
+
+                        function disabledControl() {
+                            $("#BtnRecover").prop('disabled', true);
                         }
                     </script>
                 </form>

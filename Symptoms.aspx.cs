@@ -15,35 +15,36 @@ namespace WorkingInfo
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (!IsPostBack)
-            //{
+
+         
+            ModelOXY.Employee.Employee employee = (ModelOXY.Employee.Employee)Session["EMPLOYEE"];
+
+            if (employee == null) {
+                Response.Redirect("~/LoginForm");
+            }
+   
+
             WindowsIdentity wId = (WindowsIdentity)HttpContext.Current.User.Identity;
             username.Text = wId.Name.ToUpper();
             Name.Text = username.Text.Replace("NAOXY\\", "");
-            Name.Text = "xardilaf";
+            Name.Text = employee.Names;
             //Check if exists answer for current day
             ndate.Text = DateTime.Today.ToString();
 
-            SqlDataUsername.SelectParameters["Name"].DefaultValue = Name.Text;
-            DataView dvSql1 = (DataView)SqlDataUsername.Select(DataSourceSelectArguments.Empty);
-            foreach (DataRowView drvSql1 in dvSql1)
-            {
-                Nid.Text = drvSql1["Nid"].ToString();
-                EmployeeName.Text = drvSql1["Name"].ToString();
-                //TextAlertName.Text = EmployeeName.Text;
-                TextAccessName.Text = EmployeeName.Text;
-                TextDeniedName.Text = EmployeeName.Text;
-                RadBarcode3.Text = Nid.Text;
-                RadBarcode1.Text = Nid.Text;
-                FirstName.Text = drvSql1["First_Name"].ToString();
-                LastName.Text = drvSql1["Last_Name"].ToString();
-            }
+            Nid.Text = employee.IdentificationNumber;
+            EmployeeName.Text = employee.Names;
+            //TextAlertName.Text = EmployeeName.Text;
+            TextAccessName.Text = EmployeeName.Text;
+            TextDeniedName.Text = EmployeeName.Text;
+            RadBarcode3.Text = Nid.Text;
+            RadBarcode1.Text = Nid.Text;
+            FirstName.Text = employee.Names;
+            
             AccessDate.Text = Convert.ToDateTime(ndate.Text).ToString("dd/MMM/yyyy");
             DeniedDate.Text = Convert.ToDateTime(ndate.Text).ToString("dd/MMM/yyyy");
 
             SqlDataSymptoms.SelectParameters["id"].DefaultValue = Nid.Text;
             SqlDataSymptoms.SelectParameters["ndate"].DefaultValue = DateTime.Today.ToString();
-
 
 
             DataView dvSql = (DataView)SqlDataSymptoms.Select(DataSourceSelectArguments.Empty);
@@ -168,6 +169,11 @@ namespace WorkingInfo
             Type cstype = obj.GetType();
             ClientScriptManager cs = pg.ClientScript;
             cs.RegisterClientScriptBlock(cstype, s, s.ToString());
+        }
+
+        protected void BtnCloSession_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/LoginForm");
         }
     }
 }

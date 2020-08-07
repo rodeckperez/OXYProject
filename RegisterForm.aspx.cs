@@ -18,12 +18,15 @@ namespace OXYProject
             if (!IsPostBack)
             {
                 RadAutoCompleteBox1.Filter = (RadAutoCompleteFilter)Enum.Parse(typeof(RadAutoCompleteFilter), "Contains", true);
+                RadAutoCompleteBox1.AllowCustomEntry = true;
+
                 RadAutoCompleteBox1.TextSettings.SelectionMode = (RadAutoCompleteSelectionMode)Enum.Parse(typeof(RadAutoCompleteSelectionMode), "Single", true);
             }
         }
 
         public void SaveEmployee(object sender, EventArgs e)
         {
+            BtnSaveEmployee.Enabled = false;
             if (Page.IsValid)
             {
                 string Response = "";
@@ -46,6 +49,7 @@ namespace OXYProject
                     lblResponse.Text = Response;
                 }
             }
+            BtnSaveEmployee.Enabled = true;
         }
 
 
@@ -62,20 +66,40 @@ namespace OXYProject
             Response.Redirect(Page.ResolveClientUrl("/LoginForm.aspx"));
         }
 
-        public void CompanyEntry(object sender, EventArgs e)
+        protected void IdentificationNumber_TextChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void OnKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
+            if (IdentificationNumber.Text.Trim() != "")
             {
-                var autoComplete = (RadAutoCompleteBox)sender;
+                ModelOXY.Employee.Employee employee = employeeLogic.GetDataEmployee(IdentificationNumber.Text.Trim());
+                if (employee.Mail != null)
+                {
+                    Names.Text = employee.Names.Trim();
+                    Mail.Text = employee.Mail.Trim();
+                    if (employee.Company == "")
+                    {
+                        RadAutoCompleteBox1.Entries.Clear();
+                    }
+
+
+                }
+                else
+                {
+                    Names.Text = "";
+                    Mail.Text = "";
+                    RadAutoCompleteBox1.Entries.Clear();
+
+
+                }
+            }
+            else
+            {
+                IdentificationNumber.Text = "";
+                Names.Text = "";
+                Mail.Text = "";
+                RadAutoCompleteBox1.Entries.Clear();
+
 
             }
         }
-
-
     }
 }

@@ -43,8 +43,9 @@
                     </span>
 
 
-                    <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
-                        <asp:TextBox ID="IdentificationNumber" placeholder="Numero de identificación" class="input100" runat="server" required="true"></asp:TextBox>
+                    <div class="wrap-input100 validate-input m-b-16">
+                        <asp:TextBox ID="IdentificationNumber" placeholder="Numero de identificación"
+                            class="input100" runat="server" required="true" OnTextChanged="IdentificationNumber_TextChanged" AutoPostBack="true"></asp:TextBox>
                         <span class="focus-input100"></span>
                     </div>
 
@@ -60,19 +61,25 @@
                             InputType="Text" Width="300">
                         </telerik:RadAutoCompleteBox>
                         <span class="focus-input100"></span>
+
                     </div>
 
+                 
                     <div class="wrap-input100 validate-input m-b-16">
                         <asp:TextBox ID="Mail" placeholder="Correo" class="input100" runat="server" required="true"></asp:TextBox>
 
                     </div>
-
-                    <div class="flex-col-c p-t-0 p-b-0 ">
+                    <div class="flex-col-c p-t-0 p-b-16">
                         <asp:RegularExpressionValidator ID="remail" runat="server"
                             ControlToValidate="Mail" ErrorMessage="Ingresa un correo valido" ForeColor="Red"
                             ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">
                         </asp:RegularExpressionValidator>
                     </div>
+
+                       <div class="flex-col-c p-t-0 p-b-16">
+                        <asp:RequiredFieldValidator runat="server" ID="reqName" ControlToValidate="RadAutoCompleteBox1" ErrorMessage="Ingresa la empresa a la que perteneces" ForeColor="Red" />
+                    </div>
+
 
                     <div>
                     </div>
@@ -126,9 +133,6 @@
                         var strCompany = "";
                         $(".racTokenList").addClass("input100");
                         $(".racTokenList").removeClass("racTokenList");
-                        //$("#RadAutoCompleteBox1").keydown(function (e) {
-                        //    BuildCompany(e.originalEvent.key);
-                        //});
 
 
                         function ShowPopup(title, body) {
@@ -141,19 +145,6 @@
                             location.href = 'LoginForm';
                         }
 
-                        function BuildCompany(text) {
-                            if (text == 'Backspace') {
-                                strCompany = strCompany.slice(0, -1);
-                            }
-                            else if (text == 'Space') {
-                                strCompany = strCompany + " ";
-                            }
-                            else {
-                                strCompany = strCompany + text
-                            }
-                            $(".racTextToken").val(strCompany)
-                            console.log(strCompany);
-                        }
                     </script>
                     <telerik:RadAjaxLoadingPanel runat="server" ID="RadAjaxLoadingPanel1" />
                 </form>

@@ -1,4 +1,5 @@
 <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Mobile.master.cs" Inherits="OXYProject.Site_Mobile" %>
+
 <%@ Register Src="~/ViewSwitcher.ascx" TagPrefix="friendlyUrls" TagName="ViewSwitcher" %>
 
 <!DOCTYPE html>
@@ -7,13 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.8" />
     <title><%: Page.Title %> - Working Location Information</title>
     <%--<asp:ContentPlaceHolder runat="server" ID="HeadContent" />--%>
-     <asp:PlaceHolder runat="server">
-      <%--  <%: Scripts.Render("~/bundles/modernizr") %>--%>
+    <asp:PlaceHolder runat="server">
+        <%--  <%: Scripts.Render("~/bundles/modernizr") %>--%>
     </asp:PlaceHolder>
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <style>
+        .rbCheckBox {
+            text-align: justify;
+        }
+    </style>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 </head>
-   <body>
+<body>
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -44,7 +50,9 @@
                 <p>&copy; <%: DateTime.Now.Year %> - Colombia </p>
             </footer>
         </div>
-
+        <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+        <script src="vendor/bootstrap/js/popper.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     </form>
 </body>
 

@@ -18,6 +18,7 @@ namespace OXYProject
         }
         public void RecoverPassword(object sender, EventArgs e)
         {
+            BtnRecover.Enabled = false;
             if (Page.IsValid) {
                 string Response = "";
                 Response = employeeLogic.RecoverPassword(Mail.Text);
@@ -29,11 +30,14 @@ namespace OXYProject
                     Mail.Text = "";
                 }
                 else
+
+
                 {
                     lblResponse.ForeColor = Color.Red;
                     lblResponse.Text = Response;
                 }
             }
+            BtnRecover.Enabled = true;
         }
 
         public void RedirectPage(object sender, EventArgs e)
